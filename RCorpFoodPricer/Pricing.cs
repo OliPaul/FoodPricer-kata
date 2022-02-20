@@ -17,7 +17,7 @@ namespace RCorpFoodPricer
 
     public abstract class IFoodType
     {
-        public abstract int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee);
+        public abstract int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize);
     }
 
     class FoodType
@@ -31,9 +31,9 @@ namespace RCorpFoodPricer
             _foodType = foodType;
         }
 
-        public int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
+        public int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize)
         {
-            return _foodType.calculatePrice(drinkSize, dessertSize, coffee);
+            return _foodType.calculatePrice(drinkSize, dessertSize);
             
         }
         
@@ -78,7 +78,7 @@ namespace RCorpFoodPricer
     {
         private int total = 15;
 
-        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
+        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize)
         {
             if (drinkSize == DrinkSizeEnum.Moyen && dessertSize == "normal")
             {
@@ -125,7 +125,7 @@ namespace RCorpFoodPricer
     {
         private int total = 10;
 
-        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
+        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize)
         {
             if (drinkSize == DrinkSizeEnum.Moyen && dessertSize == "normal")
             {
@@ -195,7 +195,7 @@ namespace RCorpFoodPricer
                 foodType = new FoodType(new Sandwich());
             }
 
-            total += foodType.calculatePrice(drinkSizeEnum, dessertSize, coffee);
+            total += foodType.calculatePrice(drinkSizeEnum, dessertSize);
             // Apply coffee discount 
             total += foodType.withCoffee(drinkSizeEnum, dessertSize, coffee);
             
