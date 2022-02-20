@@ -15,34 +15,9 @@ namespace RCorpFoodPricer
         Grand
     }
 
-    public class Menu
+    public abstract class IFoodType
     {
-        private IFoodType _foodType;
-        private DrinkSizeEnum _drinkSize;
-        private string _dessertSize;
-
-        public IFoodType FoodType
-        {
-            get => _foodType;
-            set => _foodType = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public DrinkSizeEnum DrinkSize
-        {
-            get => _drinkSize;
-            set => _drinkSize = value;
-        }
-
-        public string DessertSize
-        {
-            get => _dessertSize;
-            set => _dessertSize = value ?? throw new ArgumentNullException(nameof(value));
-        }
-    }
-
-    public interface IFoodType
-    {
-        int calculatePrice(string drinkSize, string dessertSize);
+        public abstract int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee);
     }
 
     class FoodType
@@ -56,126 +31,140 @@ namespace RCorpFoodPricer
             _foodType = foodType;
         }
 
-        public int calculatePrice(string drinkSize, string dessertSize)
+        public int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
         {
-            return _foodType.calculatePrice(drinkSize, dessertSize);
+            return _foodType.calculatePrice(drinkSize, dessertSize, coffee);
+            
+        }
+        
+        public int withCoffee(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
+        {
+            int total = 0;
+            if (drinkSize == DrinkSizeEnum.Moyen && dessertSize == "normal" && coffee == "yes")
+            {
+                Console.Write(" avec café offert!");
+            }
+            else
+            {
+                total += 1;
+            }
+
+            return total;
         }
 
         public FoodTypeEnum mapFoodType(string type)
         {
             return type == "assiette" ? FoodTypeEnum.Assiette : FoodTypeEnum.Sandwich;
         }
+        
+        public DrinkSizeEnum mapDrinkSize(string drinkSize)
+        {
+
+            if (drinkSize == "moyen")
+            {
+                return DrinkSizeEnum.Moyen;
+            }
+            if (drinkSize == "grand")
+            {
+                return DrinkSizeEnum.Grand;
+            }
+                
+            return DrinkSizeEnum.Petit;
+            
+        }
     }
 
     class Assiette : IFoodType
     {
-        public int calculatePrice(string drinkSize, string dessertSize)
+        private int total = 15;
+
+        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
         {
-            int total = 15;
-            //ainsi qu'une boisson de taille:
-            switch(drinkSize)
+            if (drinkSize == DrinkSizeEnum.Moyen && dessertSize == "normal")
             {
-                case "petit": 
-                    total+=2;
-                    //dans ce cas, on applique la formule standard
-                    if(dessertSize=="normal")
-                    {
-                        //pas de formule
-                        //on ajoute le prix du dessert normal
-                        total+=2;
-                    } else {
-                        //sinon on rajoute le prix du dessert special
-                        total+=4;
-                    }
-                    break;
-                //si on prends moyen
-                case "moyen": 
-                    total+=3;
-                    //dans ce cas, on applique la formule standard
-                    if(dessertSize=="normal")
-                    {
-                        //j'affiche la formule appliquée
-                        Console.Write("Prix Formule Standard appliquée ");
-                        //le prix de la formule est donc 18
-                        total=18;
-                    } else {
-                        //sinon on rajoute le prix du dessert special
-                        total+=4;
-                    }
-                    break;
-                case "grand": 
-                    total+=4;
-                    //dans ce cas, on applique la formule standard
-                    if(dessertSize=="normal")
-                    {
-                        //pas de formule
-                        //on ajoute le prix du dessert normal
-                        total+=2;
-                    } else {
-                        //dans ce cas on a la fomule max
-                        Console.Write("Prix Formule Max appliquée ");
-                        total=21;
-                    }
-                    break;
+                Console.Write("Prix Formule Standard appliquée");
+                total = 18;
+            }
+            else if (drinkSize == DrinkSizeEnum.Grand && dessertSize != "normal")
+            {
+                Console.Write("Prix Formule Max appliquée");
+                total = 21;
+            }
+            else
+            {
+                withDrink(drinkSize);
+                withDessert(dessertSize);
             }
 
             return total;
+        }
+
+        public void withDrink(DrinkSizeEnum drinkSizeEnum)
+        {
+            if (drinkSizeEnum == DrinkSizeEnum.Petit)
+            {
+                total += 2;
+            }
+            else if (drinkSizeEnum == DrinkSizeEnum.Moyen)
+            {
+                total += 3;
+            }
+            else
+            {
+                total += 4;
+            }
+        }
+
+        public void withDessert(string dessertSize)
+        {
+            total += dessertSize == "normal" ? 2 : 4;
         }
     }
 
     class Sandwich : IFoodType
     {
-        public int calculatePrice(string drinkSize, string dessertSize)
+        private int total = 10;
+
+        public override int calculatePrice(DrinkSizeEnum drinkSize, string dessertSize, string coffee)
         {
-            int total = 10;
-            //ainsi qu'une boisson de taille:
-            switch(drinkSize)
-                {
-                    case "petit": 
-                        total+=2;
-                        //dans ce cas, on applique la formule standard
-                        if(dessertSize=="normal")
-                        {
-                            //pas de formule
-                            //on ajoute le prix du dessert normal
-                            total+=2;
-                        } else {
-                            //sinon on rajoute le prix du dessert special
-                            total+=4;
-                        }
-                        break;
-                    //si on prends moyen
-                    case "moyen": 
-                        total+=3;
-                        //dans ce cas, on applique la formule standard
-                        if(dessertSize=="normal")
-                        {
-                            //j'affiche la formule appliquée
-                            Console.Write("Prix Formule Standard appliquée ");
-                            //le prix de la formule est donc 18
-                            total=13;
-                        } else {
-                            //sinon on rajoute le prix du dessert special
-                            total+=4;
-                        }
-                        break;
-                    case "grand": 
-                        total+=4;
-                        //dans ce cas, on applique la formule standard
-                        if(dessertSize=="normal")
-                        {
-                            //pas de formule
-                            //on ajoute le prix du dessert normal
-                            total+=2;
-                        } else {
-                            //dans ce cas on a la fomule max
-                            Console.Write("Prix Formule Max appliquée ");
-                            total=16;
-                        }
-                        break;
-                }
-            
+            if (drinkSize == DrinkSizeEnum.Moyen && dessertSize == "normal")
+            {
+                Console.Write("Prix Formule Standard appliquée");
+                total = 13;
+            }
+            else if (drinkSize == DrinkSizeEnum.Grand && dessertSize != "normal")
+            {
+                Console.Write("Prix Formule Max appliquée");
+                total = 16;
+            }
+            else
+            {
+                withDrink(drinkSize);
+                withDessert(dessertSize);
+            }
+
             return total;
+        }
+
+        public void withDrink(DrinkSizeEnum drinkSizeEnum)
+        {
+            if (drinkSizeEnum == DrinkSizeEnum.Petit)
+            {
+                total += 2;
+            }
+            else if (drinkSizeEnum == DrinkSizeEnum.Moyen)
+            {
+                total += 3;
+            }
+            else
+            {
+                total += 4;
+            }
+        }
+
+        public void withDessert(string dessertSize)
+        {
+            total += dessertSize == "normal" ? 2 : 4;
         }
     }
 
@@ -195,6 +184,7 @@ namespace RCorpFoodPricer
             if(string.IsNullOrEmpty(type+name)) return -1;
 
             FoodTypeEnum foodTypeEnum = foodType.mapFoodType(type);
+            DrinkSizeEnum drinkSizeEnum = foodType.mapDrinkSize(drinkSize);
 
             if (foodTypeEnum == FoodTypeEnum.Assiette)
             {
@@ -205,14 +195,10 @@ namespace RCorpFoodPricer
                 foodType = new FoodType(new Sandwich());
             }
 
-            total += foodType.calculatePrice(drinkSize, dessertSize);
+            total += foodType.calculatePrice(drinkSizeEnum, dessertSize, coffee);
+            // Apply coffee discount 
+            total += foodType.withCoffee(drinkSizeEnum, dessertSize, coffee);
             
-            if(type=="assiette" && drinkSize=="moyen" && dessertSize=="normal" && coffee=="yes")
-            {
-                Console.Write(" avec café offert!");
-            } else {
-                total+=1;
-            }
             return total;
         }
     }
