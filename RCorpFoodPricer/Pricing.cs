@@ -42,7 +42,7 @@ namespace RCorpFoodPricer
 
     public interface IFoodType
     {
-        int calculatePrice(string size, string dsize);
+        int calculatePrice(string drinkSize, string dessertSize);
     }
 
     class FoodType
@@ -56,9 +56,9 @@ namespace RCorpFoodPricer
             _foodType = foodType;
         }
 
-        public int calculatePrice(string size, string dsize)
+        public int calculatePrice(string drinkSize, string dessertSize)
         {
-            return _foodType.calculatePrice(size, dsize);
+            return _foodType.calculatePrice(drinkSize, dessertSize);
         }
 
         public FoodTypeEnum mapFoodType(string type)
@@ -69,16 +69,16 @@ namespace RCorpFoodPricer
 
     class Assiette : IFoodType
     {
-        public int calculatePrice(string size, string dsize)
+        public int calculatePrice(string drinkSize, string dessertSize)
         {
             int total = 15;
             //ainsi qu'une boisson de taille:
-            switch(size)
+            switch(drinkSize)
             {
                 case "petit": 
                     total+=2;
                     //dans ce cas, on applique la formule standard
-                    if(dsize=="normal")
+                    if(dessertSize=="normal")
                     {
                         //pas de formule
                         //on ajoute le prix du dessert normal
@@ -92,7 +92,7 @@ namespace RCorpFoodPricer
                 case "moyen": 
                     total+=3;
                     //dans ce cas, on applique la formule standard
-                    if(dsize=="normal")
+                    if(dessertSize=="normal")
                     {
                         //j'affiche la formule appliquée
                         Console.Write("Prix Formule Standard appliquée ");
@@ -106,7 +106,7 @@ namespace RCorpFoodPricer
                 case "grand": 
                     total+=4;
                     //dans ce cas, on applique la formule standard
-                    if(dsize=="normal")
+                    if(dessertSize=="normal")
                     {
                         //pas de formule
                         //on ajoute le prix du dessert normal
@@ -125,16 +125,16 @@ namespace RCorpFoodPricer
 
     class Sandwich : IFoodType
     {
-        public int calculatePrice(string size, string dsize)
+        public int calculatePrice(string drinkSize, string dessertSize)
         {
             int total = 10;
             //ainsi qu'une boisson de taille:
-            switch(size)
+            switch(drinkSize)
                 {
                     case "petit": 
                         total+=2;
                         //dans ce cas, on applique la formule standard
-                        if(dsize=="normal")
+                        if(dessertSize=="normal")
                         {
                             //pas de formule
                             //on ajoute le prix du dessert normal
@@ -148,7 +148,7 @@ namespace RCorpFoodPricer
                     case "moyen": 
                         total+=3;
                         //dans ce cas, on applique la formule standard
-                        if(dsize=="normal")
+                        if(dessertSize=="normal")
                         {
                             //j'affiche la formule appliquée
                             Console.Write("Prix Formule Standard appliquée ");
@@ -162,7 +162,7 @@ namespace RCorpFoodPricer
                     case "grand": 
                         total+=4;
                         //dans ce cas, on applique la formule standard
-                        if(dsize=="normal")
+                        if(dessertSize=="normal")
                         {
                             //pas de formule
                             //on ajoute le prix du dessert normal
@@ -187,7 +187,7 @@ namespace RCorpFoodPricer
         //de son type (normal ou special) et si il prend un café ou pas (yes ou no).
         //les prix sont fixes pour chaque type de chose mais des réductions peuvent s'appliquer
         //si cela rentre dans une formule!
-        public double Compute(string type, string name, string beverage, string size, string dessert, string dsize, string coffee)
+        public double Compute(string type, string name, string beverage, string drinkSize, string dessert, string dessertSize, string coffee)
         {
             FoodType foodType = new FoodType();
             int total = 0;
@@ -205,9 +205,9 @@ namespace RCorpFoodPricer
                 foodType = new FoodType(new Sandwich());
             }
 
-            total += foodType.calculatePrice(size, dsize);
+            total += foodType.calculatePrice(drinkSize, dessertSize);
             
-            if(type=="assiette" && size=="moyen" && dsize=="normal" && coffee=="yes")
+            if(type=="assiette" && drinkSize=="moyen" && dessertSize=="normal" && coffee=="yes")
             {
                 Console.Write(" avec café offert!");
             } else {
