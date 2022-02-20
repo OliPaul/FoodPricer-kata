@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCorpFoodPricer", "RCorpFoodPricer\RCorpFoodPricer.csproj", "{0B86788E-DE51-4A91-A53E-319A5415048D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCorpFoodPricer.Tests", "RCorpFoodPricer.Tests\RCorpFoodPricer.Tests.csproj", "{3E315C57-A4A0-41EB-8DCF-A9F421804A5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B86788E-DE51-4A91-A53E-319A5415048D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B86788E-DE51-4A91-A53E-319A5415048D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B86788E-DE51-4A91-A53E-319A5415048D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B86788E-DE51-4A91-A53E-319A5415048D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E315C57-A4A0-41EB-8DCF-A9F421804A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E315C57-A4A0-41EB-8DCF-A9F421804A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E315C57-A4A0-41EB-8DCF-A9F421804A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E315C57-A4A0-41EB-8DCF-A9F421804A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

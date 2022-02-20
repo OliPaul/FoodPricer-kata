@@ -1,0 +1,15 @@
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/RCorpFoodPricer
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/RCorpFoodPricer.deps.json
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/RCorpFoodPricer.runtimeconfig.json
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/RCorpFoodPricer.dll
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/ref/RCorpFoodPricer.dll
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/bin/Debug/net6.0/RCorpFoodPricer.pdb
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.csproj.AssemblyReference.cache
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.AssemblyInfoInputs.cache
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.AssemblyInfo.cs
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.csproj.CoreCompileInputs.cache
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.dll
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/ref/RCorpFoodPricer.dll
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.pdb
+/Users/paulolivier/RiderProjects/RCorpFoodPricer/RCorpFoodPricer/obj/Debug/net6.0/RCorpFoodPricer.genruntimeconfig.cache
